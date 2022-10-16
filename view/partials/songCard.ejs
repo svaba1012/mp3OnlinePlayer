@@ -1,0 +1,64 @@
+<div
+  class="card mb-2 bg-dark border-white"
+  style="max-width: inherit; margin-top: 10px"
+>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        src="smallpic.jpeg"
+        class="img-fluid rounded-start"
+        alt="..."
+        style="height: 120px"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="container text-center">
+          <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+              <h5><%= song.title %></h5>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+              <%= song.artist.name %>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+              <h5><%= song.genre.name %></h5>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+              <%= Math.floor(song.lenght / 60000) + ":" +
+              Math.floor(song.lenght/1000)%60 %>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6 col-6">
+              <form action="/download" method="post">
+                <input
+                  type="text"
+                  name="path"
+                  style="display: none"
+                  value="<%=song.path %>"
+                />
+                <button
+                  class="btn btn-song-card fw-bold border-white btn-spec"
+                  type="submit"
+                >
+                  <i class="fa-solid fa-file-arrow-down"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6 col-6">
+              <form
+                action="/songs/<%= song.kebabTitle %>/<%= idx %>"
+                method="get"
+              >
+                <button class="btn btn-song-card fw-bold border-white btn-spec">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
