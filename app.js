@@ -6,11 +6,14 @@ const nodeID3 = require("node-id3");
 const multipart = require("connect-multiparty");
 const fs = require("fs");
 const getMP3Duration = require("get-mp3-duration");
+const dotenv = require("dotenv");
 const _ = require("lodash");
 
 const multipartMiddleware = multipart({
   uploadDir: "./songs",
 });
+
+dotenv.config();
 
 const app = express();
 
@@ -22,7 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static("public"));
 app.use(express.static(__dirname + "/public"));
 
-mongoose.connect("mongodb://localhost:27017/mp3SongsDB");
+mongoose.connect(process.env.DB_URL);
+
 const artistSchema = mongoose.Schema({
   name: String,
 });
@@ -48,6 +52,7 @@ const Song = mongoose.model("Song", songSchema);
 const Artist = mongoose.model("Artist", artistSchema);
 const Genre = mongoose.model("Genre", genreSchema);
 const PlayList = mongoose.model("Playlist", playListSchema);
+
 app.get("/", function (req, res) {
   res.render(__dirname + "/view/home.ejs");
 });
