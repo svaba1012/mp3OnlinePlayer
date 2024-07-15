@@ -120,7 +120,7 @@
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     <div class="container-spec d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%- include("partials/navbar.ejs") %>
+      <%- include("partials/navbar.ejs", {navId: 0}) %>
       <h2 style="margin-bottom: 20px">Search results</h2>
       <% if(songs.length == 0) { %>
       <h4>

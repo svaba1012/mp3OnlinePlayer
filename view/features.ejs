@@ -9,7 +9,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Hugo 0.101.0" />
-    <title>Features · Bootstrap v5.2</title>
+    <title>Features</title>
 
     <link
       rel="canonical"
@@ -57,6 +57,10 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/7867ac1278.js"
+      crossorigin="anonymous"
+    ></script>
 
     <style>
       .bd-placeholder-img {
@@ -115,135 +119,15 @@
     <!-- Custom styles for this template -->
     <link href="style.css" rel="stylesheet" />
   </head>
-  <body class="text-bg-dark">
+  <body class="text-bg-dark text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%- include("partials/navbar.ejs") %>
+      <%- include("partials/navbar.ejs", {navId: 1}) %>
       <div class="container px-4 py-5" id="icon-grid">
-        <h2 class="pb-2 border-bottom">Icon grid</h2>
+        <h2 class="pb-2 border-bottom">What we offer</h2>
 
-        <div
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5"
-        >
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#bootstrap" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#cpu-fill" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#calendar3" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#home" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#speedometer2" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#toggles2" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#geo-fill" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
-          <div class="col d-flex align-items-start">
-            <svg
-              class="bi text-muted flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em"
-            >
-              <use xlink:href="#tools" />
-            </svg>
-            <div>
-              <h3 class="fw-bold mb-0 fs-4">Featured title</h3>
-              <p>
-                Paragraph of text beneath the heading to explain the heading.
-              </p>
-            </div>
-          </div>
+        <div class="row g-2">
+          <% features.forEach((feature, i)=>{ %>
+          <%-include("partials/featureCard.ejs", {feature: feature})%> <% }); %>
         </div>
       </div>
     </div>

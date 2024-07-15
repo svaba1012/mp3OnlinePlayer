@@ -57,8 +57,31 @@ app.get("/", function (req, res) {
   res.render(__dirname + "/view/home.ejs");
 });
 
+let features = [
+  {
+    title: "Upload",
+    description: "Upload mp3 songs, so you and others can listen later.",
+    iconClass: "fa-solid fa-upload",
+  },
+  {
+    title: "Search",
+    description: "Search uploaded songs by name, author or duration.",
+    iconClass: "fa-solid fa-magnifying-glass",
+  },
+  {
+    title: "Play",
+    description: "Play songs uploaded by you and others.",
+    iconClass: "fa-solid fa-headphones",
+  },
+  {
+    title: "Download",
+    description: "Download songs uploaded by others.",
+    iconClass: "fa-solid fa-download",
+  },
+];
+
 app.get("/features", function (req, res) {
-  res.render(__dirname + "/view/features.ejs");
+  res.render(__dirname + "/view/features.ejs", { features: features });
 });
 
 app.get("/upload", function (req, res) {
@@ -143,7 +166,7 @@ app.post("/results", function (req, res) {
   }
 });
 
-app.post("/upload", multipartMiddleware, function (req, res) {
+app.post("/upload", multipartMiddleware, async function (req, res) {
   Artist.find({ name: req.body.artist }, function (err, artists) {
     let artistId;
     let artist;
@@ -162,6 +185,7 @@ app.post("/upload", multipartMiddleware, function (req, res) {
       if (genres.length == 0) {
         let newGenre = new Genre({ name: req.body.genre });
         genre = newGenre;
+
         newGenre.save(function (err, genre) {
           let buffer = fs.readFileSync(req.files.songFile.path);
           let duration = getMP3Duration(buffer);

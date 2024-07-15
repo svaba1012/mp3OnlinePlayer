@@ -111,12 +111,14 @@
       }
     </style>
 
+    
+
     <!-- Custom styles for this template -->
     <link href="style.css" rel="stylesheet" />
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%- include("partials/navbar.ejs") %>
+      <%- include("partials/navbar.ejs", {navId: 0}) %>
       <!-- <main class="px-3"> -->
         <h1>Upload song</h1>
         
@@ -142,7 +144,7 @@
            
 
 
-  <input type="text" name="title" class="form-control" placeholder="Song title" aria-label="Username" required>
+  <input type="text" id="songTitle" name="title" class="form-control" placeholder="Song title" aria-label="Username" required>
 
   <input name="artist" type="text" class="form-control" placeholder="Artist name" aria-label="Recipient's username"  list="exampleList1" required autocomplete="off">
 <datalist id="exampleList1" >
@@ -176,5 +178,13 @@
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document.getElementById('getFile').onchange = function(e) {
+        let fileName = e.srcElement.files[0].name;
+        document.getElementById('songTitle').value = fileName.substring(0, fileName.indexOf('.'));
+        // fire the upload here
+      };
+
+    </script>
   </body>
 </html>

@@ -116,7 +116,7 @@
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%- include("partials/navbar.ejs") %>
+      <%- include("partials/navbar.ejs", {navId: 0}) %>
       <main class="px-3">
         <h1>Play, download, upload songs</h1>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -148,9 +148,9 @@
           <input type="file" id="getFile" style="display: none" /> -->
         </div>
         <p class="lead">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae eaque
-          ratione, quod dolores, ad eveniet commodi magnam soluta dolorem qui
-          voluptatibus mollitia libero unde consequatur natus a nam enim minima!
+          Connect with others through music. Upload and share your favourites
+          songs to the comunity. Search and listen songs uploaded by you and
+          other users.
         </p>
       </main>
 

@@ -109,30 +109,36 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+      .d-flex {
+        gap: 10px;
+      }
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet" />
+    <!-- <link href="style.css" rel="stylesheet" /> -->
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
+    <!-- <div class="container-spec d-flex w-100 h-100 p-3 mx-auto flex-column"> -->
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%- include("partials/navbar.ejs") %>
+      <%- include("partials/navbar.ejs", {navId: 0}) %>
       <div class="row">
         <div class="col-6"><h2><%= song.title %></h2></div>
         <div class="col-6"><h3><%= song.artist.name %></h3></div>
       </div>
 
       <div
-        class="row justify-content-md-center"
+        class="d-flex justify-content-center"
         style="
           margin-top: 10vh;
           background-color: white;
-          margin-left: 15vw;
-          margin-right: 15vw;
+          margin-left: 1vw;
+          margin-right: 1vw;
           border-radius: 20px;
         "
       >
-        <div class="col-md-auto">
+        <div class="d-flex flex-grow-0"></div>
+        <div class="d-flex flex-grow-0">
           <form action="/prev" method="post">
             <input
               type="text"
@@ -149,19 +155,19 @@
             </button>
           </form>
         </div>
-        <div class="col-md-auto">
+        <div class="d-flex flex-grow-1">
           <audio
             controls
             autoplay
             class="audio-player"
             id="audio-player"
-            style="width: 50vw"
+            style="width: 100%"
           >
             <source src="/audio/<%= song.kebabTitle %>" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
         </div>
-        <div class="col-md-auto">
+        <div class="d-flex flex-grow-0">
           <form action="/next" method="post">
             <input
               type="text"
@@ -179,6 +185,7 @@
             </button>
           </form>
         </div>
+        <div class="d-flex flex-grow-0"></div>
       </div>
 
       <footer class="mt-auto text-white-50"></footer>
